@@ -1,0 +1,26 @@
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: task_manager_development
+  pool: 5
+  username: ocrf_builder
+  password: postgres
+  host: localhost
+
+test: &test
+  adapter: postgresql
+  encoding: unicode
+  database: task_manager_test
+  pool: 5
+  username: ocrf_builder
+  password: postgres
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: task_manager_production
+  pool: 5
+  username: task_manager
+  password:
