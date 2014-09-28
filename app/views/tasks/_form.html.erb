@@ -1,6 +1,8 @@
 <%= form_for @task, remote:true do |f| %>
-  <%= f.text_field :description %>
-  <%= f.text_field :deadline %>
+  <%= f.label :description, :class => "app-label" %>
+  <%= f.text_field :description %></br>
+  <%= f.label :deadline, :class => "app-label" %>
+  <%= f.text_field :deadline %></br>
 
-  <%= f.submit %>
+  <%= f.submit :class => 'btn' %>
 <% end %>
