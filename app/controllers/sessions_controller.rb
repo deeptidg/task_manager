@@ -6,12 +6,12 @@ class SessionsController < ApplicationController
     logger.info "login_params #{login_params}"
     user = login(login_params[:email], login_params[:password], login_params[:remember_me])
     if user
-      redirect_back_or_to root_url, :notice => "Logged in!"
+      redirect_to tasks_path
     else
-      flash.now.alert = "Email or password was invalid."
+      redirect_back_or_to root_url, :notice => "Email or password was invalid."
     end
   end
-  
+
   def destroy
     logout
     redirect_to root_url, :notice => "Logged out!"
