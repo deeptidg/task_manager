@@ -1,7 +1,9 @@
 class TasksController < ApplicationController
 
   before_action :all_tasks, only: [:index, :create, :update, :destroy]
+
   before_action :set_tasks, only: [:edit, :update, :destroy]
+  before_action :require_login 
   respond_to :html, :js
 
   def new
@@ -9,7 +11,8 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.create(task_params)
+    @task = current_user.tasks.build(task_params)
+    @task.save
   end
 
   def update
@@ -26,10 +29,10 @@ class TasksController < ApplicationController
     end
 
     def all_tasks
-      @tasks = Task.all
+      @tasks = current_user.tasks
     end
 
     def set_tasks
-      @task = Task.find(params[:id])
+      @task = current_user.tasks.find(params[:id])
     end
 end
